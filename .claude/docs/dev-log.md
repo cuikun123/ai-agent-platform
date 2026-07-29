@@ -289,9 +289,17 @@
 - **验证结果：**
   - 后端编译通过，前端编译通过
 
----
+### 字段命名统一（realName → nickname）
 
-### [任务名称]
+- **修改文件：**
+  - `RegisterRequest.java` — realName → nickname
+  - `UserService.java` — request.getRealName() → request.getNickname()
+  - `types/api.ts` — RegisterRequest.realName → nickname
+  - `RegisterPage.tsx` — 表单字段 realName → nickname，register 调用参数同步更新
+- **原因：** 前端用 realName，后端实体用 nickname，前后端字段名不一致
+- **验证结果：** 后端编译通过，前端编译通过，全局 grep 无遗漏
+
+---
 
 - **新增文件：** 文件列表
 - **修改文件：** 文件列表

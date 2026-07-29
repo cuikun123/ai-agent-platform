@@ -22,7 +22,7 @@ function RegisterPage() {
     const values = await form.validate()
     await register({
       username: values.username,
-      realName: values.realName,
+      nickname: values.nickname,
       email: values.email,
       password: values.password,
     })
@@ -44,7 +44,7 @@ function RegisterPage() {
           <Input prefix={<IconUser />} placeholder="3-20 个字符，支持字母和数字" size="large" />
         </FormItem>
 
-        <FormItem field="realName" label="真实姓名" rules={[{ required: true, message: '请输入真实姓名' }]}>
+        <FormItem field="nickname" label="真实姓名" rules={[{ required: true, message: '请输入真实姓名' }]}>
           <Input prefix={<IconIdcard />} placeholder="用于团队内显示" size="large" />
         </FormItem>
 

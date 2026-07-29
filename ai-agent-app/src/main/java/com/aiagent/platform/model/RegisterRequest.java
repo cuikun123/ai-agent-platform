@@ -16,7 +16,7 @@ public class RegisterRequest {
     private String username;
 
     @NotBlank(message = "真实姓名不能为空")
-    private String realName;
+    private String nickname;
 
     @NotBlank(message = "邮箱不能为空")
     @Email(message = "邮箱格式不正确")

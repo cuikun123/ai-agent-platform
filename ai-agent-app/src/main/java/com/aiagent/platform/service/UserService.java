@@ -55,7 +55,7 @@ public class UserService {
         // 构建用户实体
         User user = new User();
         user.setUsername(request.getUsername());
-        user.setNickname(request.getRealName());
+        user.setNickname(request.getNickname());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setStatus((short) 1);

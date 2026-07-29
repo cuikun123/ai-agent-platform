@@ -8,7 +8,7 @@ export interface ApiResponse<T = unknown> {
 /** 注册请求参数 */
 export interface RegisterRequest {
   username: string
-  realName: string
+  nickname: string
   email: string
   password: string
 }
