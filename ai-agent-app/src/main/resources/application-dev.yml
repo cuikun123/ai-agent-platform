@@ -1,0 +1,46 @@
+# 开发环境配置
+
+spring:
+  # 数据源
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ai_agent
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:admin123}
+    driver-class-name: org.postgresql.Driver
+
+  # Redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:admin123}
+
+# Actuator：排除 Redis 健康检查（未安装 Redis 时避免 health DOWN）
+management:
+  health:
+    redis:
+      enabled: false
+
+# MyBatis-Plus
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    # 下划线转驼峰
+    map-underscore-to-camel-case: true
+    # SQL 日志
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      # 逻辑删除
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# JWT
+jwt:
+  # 密钥（生产环境必须通过环境变量 JWT_SECRET 设置随机强密钥）
+  secret: ${JWT_SECRET:ai-agent-platform-dev-secret-key-2026-very-long-and-secure}
+  # accessToken 有效期（毫秒）：2 小时
+  access-token-expiration: 7200000
+  # refreshToken 有效期（毫秒）：7 天
+  refresh-token-expiration: 604800000

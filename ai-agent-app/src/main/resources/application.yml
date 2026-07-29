@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ai-agent-platform
+  profiles:
+    active: dev
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+# 日志
+logging:
+  level:
+    com.aiagent.platform: debug

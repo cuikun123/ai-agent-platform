@@ -1,0 +1,300 @@
+/* Arco Design 主题定制 — 蓝色系 */
+
+:root {
+  /* 主色：专业蓝 */
+  --color-primary-1: #E8F3FF;
+  --color-primary-2: #BEDAFF;
+  --color-primary-3: #94BFFF;
+  --color-primary-4: #6AA1FF;
+  --color-primary-5: #4080FF;
+  --color-primary-6: #246EFF;
+  --color-primary-7: #1855DB;
+  --color-primary-8: #0F3FB7;
+  --color-primary-9: #0A2C93;
+  --color-primary-10: #061D70;
+
+  /* 圆角 */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+}
+
+/* 全局基础样式 */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+}
+
+/* ========== 认证页面通用样式 ========== */
+
+.auth-page {
+  display: flex;
+  height: 100vh;
+}
+
+/* ---------- 左侧品牌区：高级感 ---------- */
+
+.auth-page__left {
+  flex: 1;
+  background: #080b16;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 主光球：蓝色，缓慢漂移 */
+.auth-page__left::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(36, 110, 255, 0.45) 0%, transparent 70%);
+  top: -10%;
+  left: -10%;
+  animation: orbFloat1 12s ease-in-out infinite;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* 副光球：紫色，反向漂移 */
+.auth-page__left::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(120, 60, 255, 0.35) 0%, transparent 70%);
+  bottom: -15%;
+  right: -10%;
+  animation: orbFloat2 15s ease-in-out infinite;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+/* 第三个光球：青色，通过子元素实现 */
+.auth-brand__orb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, transparent 70%);
+  top: 50%;
+  left: 60%;
+  animation: orbFloat3 10s ease-in-out infinite;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* 网格纹理叠加 */
+.auth-brand__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* 品牌内容（文字等）保持在最上层 */
+.auth-page__left > .auth-brand__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-page__left h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 28px 0 10px;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 40px rgba(36, 110, 255, 0.3);
+}
+
+.auth-page__left p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+/* 光球漂移动画 */
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(40px, 30px) scale(1.1); }
+  66%      { transform: translate(-20px, 50px) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-50px, -30px) scale(1.05); }
+  66%      { transform: translate(30px, -40px) scale(1.1); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(30px, -40px) scale(1.15); }
+  66%      { transform: translate(-40px, 20px) scale(0.9); }
+}
+
+/* ---------- 右侧表单区 ---------- */
+
+.auth-page__right {
+  width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #fff;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 380px;
+}
+
+/* 卡片顶部渐变边框线 */
+.auth-form::before {
+  content: '';
+  display: block;
+  height: 3px;
+  margin-bottom: 32px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #246EFF 0%, #783CFF 50%, #00D2FF 100%);
+}
+
+/* 标题：加粗，拉开层次 */
+.auth-form__title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1d2129;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+/* 副标题：缩小、灰色，与标题形成对比 */
+.auth-form__subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 28px;
+}
+
+/* 渐变按钮 */
+.auth-form__submit-btn {
+  background: linear-gradient(135deg, #246EFF 0%, #4080FF 100%) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.auth-form__submit-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(36, 110, 255, 0.35);
+}
+
+.auth-form__submit-btn:active {
+  transform: scale(0.99);
+}
+
+/* 安全承诺 */
+.auth-form__trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+/* 底部链接 */
+.auth-form__footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #86909c;
+}
+
+.auth-form__footer a {
+  color: var(--color-primary-6);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-form__footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 密码强度条 ---------- */
+
+.password-strength {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.password-strength__bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: #e5e6eb;
+  transition: background 0.3s ease;
+}
+
+.password-strength__bar--active.weak    { background: #F53F3F; }
+.password-strength__bar--active.medium  { background: #FF7D00; }
+.password-strength__bar--active.strong  { background: #00B42A; }
+
+.password-strength__text {
+  font-size: 12px;
+  margin-top: 4px;
+  transition: color 0.3s ease;
+}
+
+.password-strength__text--weak   { color: #F53F3F; }
+.password-strength__text--medium { color: #FF7D00; }
+.password-strength__text--strong { color: #00B42A; }
+
+/* ---------- 即时校验提示 ---------- */
+
+.field-valid {
+  font-size: 12px;
+  color: #00B42A;
+  margin-top: 4px;
+}
+
+.field-invalid {
+  font-size: 12px;
+  color: #F53F3F;
+  margin-top: 4px;
+}
+
+/* ========== 响应式 ========== */
+
+@media (max-width: 900px) {
+  .auth-page__left {
+    display: none;
+  }
+
+  .auth-page__right {
+    width: 100%;
+  }
+}

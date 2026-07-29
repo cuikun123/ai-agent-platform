@@ -1,0 +1,30 @@
+# IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Maven
+target/
+*.jar
+*.war
+*.ear
+
+# VS Code
+.vscode/
+
+# Node.js
+node_modules/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 环境变量
+.env
+*.env.local
+
+# 日志
+*.log
+logs/
