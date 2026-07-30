@@ -22,9 +22,10 @@
 - `chatClient.prompt().user(msg).call().entity(MyPojo.class)`
 - 自己用 Jackson 解析 LLM 返回的 JSON 容易出格式问题
 
-**6. DeepSeek 用 OpenAI 协议接入，base-url 必须改**
-- 依赖：`spring-ai-openai-spring-boot-starter`
-- base-url 必须设为 `https://api.deepseek.com`，不能用 OpenAI 默认地址
+**6. DeepSeek 用专用 starter，不是 OpenAI starter**
+- 依赖：`spring-ai-starter-model-deepseek`（不是 `spring-ai-openai-spring-boot-starter`）
+- 配置前缀：`spring.ai.deepseek.*`（不是 `spring.ai.openai.*`）
+- 本地 Maven 缓存有 1.1.8 版本
 
 ## SSE 流式
 

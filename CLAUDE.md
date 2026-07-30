@@ -25,6 +25,36 @@ Enterprise AI Agent Platform — 企业级 AI Agent 平台，为企业提供统�
 - 只做被要求的事，不做额外改动
 - 不确定时必须向用户确认，禁止猜测后直接实现
 
+## 项目结构
+
+```
+ai-agent-app/src/main/java/com/aiagent/platform/
+├── controller/         # 接口层：接收请求、参数校验、返回 Result
+├── service/            # 业务层：核心逻辑、事务管理
+├── repository/         # 数据层：MyBatis-Plus Mapper
+├── entity/             # 数据库实体（对应表结构，不暴露给前端）
+├── model/              # Request / Response / VO（纯数据载体）
+├── config/             # Spring 配置类
+├── filter/             # 拦截器（如 JWT 认证）
+├── util/               # 工具类（如 JwtUtils）
+├── common/
+│   ├── result/         # Result<T> 统一返回 + ErrorCode 错误码
+│   └── exception/      # BusinessException + GlobalExceptionHandler
+└── AiAgentApplication.java  # 启动类
+
+ai-agent-web/src/
+├── pages/              # 页面组件（LoginPage、HomePage 等）
+│   └── register/       #   注册页（含专属子组件）
+├── components/         # 通用 UI 组件（AuthGuard、AuthLayout、MainLayout）
+├── hooks/              # 自定义 Hook（useAsync、usePasswordStrength）
+├── api/                # 接口请求封装（auth.ts、request.ts）
+├── stores/             # Zustand 状态管理
+├── types/              # TypeScript 类型定义（api.ts）
+├── utils/              # 工具函数（auth.ts token 存取）
+├── styles/             # 全局样式（theme.css）
+└── assets/             # 静态资源
+```
+
 ## 文档指引
 
 | 需要什么 | 看哪里 |

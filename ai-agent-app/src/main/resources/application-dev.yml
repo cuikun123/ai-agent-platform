@@ -15,6 +15,15 @@ spring:
       port: ${REDIS_PORT:6379}
       password: ${REDIS_PASSWORD:admin123}
 
+  # Spring AI（DeepSeek 专用 starter）
+  ai:
+    deepseek:
+      base-url: https://api.deepseek.com
+      api-key: ${DEEPSEEK_API_KEY}
+      chat:
+        options:
+          model: deepseek-chat
+
 # Actuator：排除 Redis 健康检查（未安装 Redis 时避免 health DOWN）
 management:
   health:
@@ -44,3 +53,8 @@ jwt:
   access-token-expiration: 7200000
   # refreshToken 有效期（毫秒）：7 天
   refresh-token-expiration: 604800000
+
+# AI 对话配置
+ai:
+  chat:
+    system-prompt: "你是一个友好的 AI 助手，用中文回答问题，回答要简洁准确，不确定时说明。"
