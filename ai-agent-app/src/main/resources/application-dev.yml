@@ -58,3 +58,5 @@ jwt:
 ai:
   chat:
     system-prompt: "你是一个友好的 AI 助手，用中文回答问题，回答要简洁准确，不确定时说明。"
+    # 历史消息最大 token 数（DeepSeek 约 64K，留 24K 给当前对话，历史最多 40K）
+    max-history-tokens: 40000

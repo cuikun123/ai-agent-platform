@@ -4,6 +4,7 @@ import MainLayout from './components/MainLayout'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/register/RegisterPage'
 import HomePage from './pages/HomePage'
+import ChatPage from './pages/chat/ChatPage'
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         }
       >
         <Route index element={<HomePage />} />
+        <Route path="chat" element={<ChatPage />} />
+        <Route path="chat/:conversationId" element={<ChatPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
